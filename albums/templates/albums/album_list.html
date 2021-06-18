@@ -1,33 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Awesome Albums</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
-        <link rel="stylesheet" href="{% static 'css/album.css' %}">
-    </head>
-    <body>
-        <header class="page-header">
-            <h1><a href="/">Collection of Fantastical Tunes</a></h1>
-        </header>
-        <main class="container">
-            <div class="row">
-                <div class="col">
-                    {% for album in albums %}
-                        <article class="post">
-                            <h2><a href="">{{ album.title }}</a></h2>
-                            <p>{{ album.artist|linebreaksbr }}</p>
-                        </article>
-                    {% endfor %}
-                </div>
-            </div>
-        </main>
-    </body>
-    </html>
-    <!-- {% for album in albums %}
-    <article class="post">
-    <h2><a href="">{{ album.title }}</a></h2>
-    <p>{{ album.artist }}</p>
-    </article>
-{% endfor %} -->
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{% for album in albums %}
+<article class="post">
+  <h2><a href="">{{ album.title }}</a></h2>
+  <p>{{ album.artist|linebreaksbr }}</p>
+</article>
+{% endfor %}
+{% endblock %}
