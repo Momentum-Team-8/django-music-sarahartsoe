@@ -8,14 +8,26 @@
         <link rel="stylesheet" href="{% static 'css/album.css' %}">
     </head>
     <body>
-        <header>
+        <header class="page-header">
             <h1><a href="/">Collection of Fantastical Tunes</a></h1>
         </header>
-        {% for album in albums %}
-        <article>
-        <h2><a href="">{{ album.title }}</a></h2>
-        <p>{{ album.artist }}</p>
-        </article>
-{% endfor %}
+        <main class="container">
+            <div class="row">
+                <div class="col">
+                    {% for album in albums %}
+                        <article class="post">
+                            <h2><a href="">{{ album.title }}</a></h2>
+                            <p>{{ album.artist|linebreaksbr }}</p>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
     </body>
-</html>
+    </html>
+    <!-- {% for album in albums %}
+    <article class="post">
+    <h2><a href="">{{ album.title }}</a></h2>
+    <p>{{ album.artist }}</p>
+    </article>
+{% endfor %} -->
