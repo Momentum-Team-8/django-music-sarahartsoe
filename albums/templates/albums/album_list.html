@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>Awesome Albums</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     </head>
     <body>
         <header>
             <h1><a href="/">Collection of Fantastical Tunes</a></h1>
         </header>
-
-        {{ albums }}
+        {% for album in albums %}
+        <article>
+        <h2><a href="">{{ album.title }}</a></h2>
+        <p>{{ album.artist }}</p>
+        </article>
+{% endfor %}
     </body>
 </html>
