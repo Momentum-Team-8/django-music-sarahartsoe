@@ -1,0 +1,8 @@
+{% extends 'albums/base.html' %}
+
+{% block content %}
+    <article class="post"></article>
+        <h2>{{ album.title }}</h2>
+        <p>{{ album.artist|linebreaksbr }}</p>
+    </article>
+{% endblock %}
