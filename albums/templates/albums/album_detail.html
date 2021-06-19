@@ -1,7 +1,18 @@
 {% extends 'albums/base.html' %}
 
 {% block content %}
-    <article class="post"></article>
+<h1>Album Details</h1>
+    <article class="post">
+        <aside class="actions">
+            <a class="btn btn-default" href="{% url 'album_edit' pk=post.pk %}">
+              {% include './icons/pencil-fill.svg' %}
+            </a>
+        </aside>
+        {% if album.created_date %}
+            <time class="date">
+                {{ album.created_date }}
+            </time>
+        {% endif %}
         <h2>{{ album.title }}</h2>
         <p>{{ album.artist|linebreaksbr }}</p>
     </article>
