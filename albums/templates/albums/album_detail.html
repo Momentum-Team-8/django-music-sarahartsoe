@@ -15,5 +15,8 @@
         {% endif %} -->
         <h2>{{ album.title }}</h2>
         <p>{{ album.artist|linebreaksbr }}</p>
+        <a class="btn btn-default" href="{% url 'album_delete' pk=album.pk %}" method="POST">
+            {% include './icons/trash.svg' %}
+        </a>
     </article>
 {% endblock %}
