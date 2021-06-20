@@ -9,8 +9,8 @@ def album_list(request):
     return render(request, 'albums/album_list.html', {'albums': albums})
 
 def album_detail(request, pk):
-    album = get_object_or_404(Album, pk=pk)
-    return render(request, 'albums/album_detail.html', {'album': album})
+    albums = get_object_or_404(Album, pk=pk)
+    return render(request, 'albums/album_detail.html', {'albums': albums})
 
 def album_new(request):
     if request.method == "POST":
@@ -19,7 +19,7 @@ def album_new(request):
             album = form.save(commit=False)
             album.created_date = timezone.now()
             album.save()
-            return redirect('album_detail', pk=album.pk)
+            return redirect('album_list')
     else:
         form = AlbumForm()
     return render(request, 'albums/album_edit.html', {'form': form})
@@ -37,7 +37,7 @@ def album_edit(request, pk):
         form = AlbumForm(instance=album)
     return render(request, 'albums/album_edit.html', {'form': form})
 
-
+# below version gives me a form but does redirect to album list
 # def album_new(request):
     if request.method == "POST":
         form = AlbumForm()
