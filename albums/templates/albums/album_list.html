@@ -3,6 +3,9 @@
 {% block content %}
 {% for album in albums %}
 <article class="post">
+  <time class="date">
+    {{ album.created_date }}
+  </time>
     <h2><a href="{% url 'album_detail' pk=album.pk %}">{{ album.title }}</a></h2>
   <p>{{ album.artist|linebreaksbr }}</p>
 </article>

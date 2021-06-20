@@ -8,8 +8,8 @@ def album_list(request):
     return render(request, 'albums/album_list.html', {'albums': albums})
 
 def album_detail(request, pk):
-    albums = get_object_or_404(Album, pk=pk)
-    return render(request, 'albums/album_detail.html', {'albums': albums})
+    album = get_object_or_404(Album, pk=pk)
+    return render(request, 'albums/album_detail.html', {'album': album})
 
 def album_new(request):
     if request.method == "POST":
