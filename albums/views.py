@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Album
 from .forms import AlbumForm
 from django.utils import timezone
+from albums.models import Album
 
 # Create your views here.
 def album_list(request):
     albums = Album.objects.all()
     return render(request, 'albums/album_list.html', {'albums': albums})
-
 
 def album_detail(request, pk):
     album = get_object_or_404(Album, pk=pk)
@@ -33,7 +33,7 @@ def album_edit(request, pk):
             album = form.save(commit=False)
             album.created_date = timezone.now()
             album.save()
-            return redirect('album_detail', pk=album.pk)
+            return redirect('album_list')
     else:
         form = AlbumForm(instance=album)
     return render(request, 'albums/album_edit.html', {'form': form})
